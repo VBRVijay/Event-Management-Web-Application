@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    </link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+    <h1>Event Management System</h1>
+    <nav>
+    <button class="nav-btn active"
+
+# onclick="showSection('events')">Events</button>
+
+<button class="nav-btn"
+onclick="showSection('attendees')">Attendees</button>
+    <button class="nav-btn"
+onclick="showSection('reports')">Reports</button>
+    <button class="nav-btn"
+onclick="showSection('import')">ImportCSV</button>
+    </nav>
+    </header>
+
+<!-- Events Section -->
+<section id="events" class="section active">
+    <div class="section-header">
+    <h2>Event Management</h2>
+    <button class="btn btn-primary"
+onclick="openEventModal()">Create
+
+Event</button>
+    </div>
+
+<div class="search-bar">
+    <input type="text" id="searchTitle"
+placeholder="Search by title...">
+    <input type="date"
+id="searchDate">
+    <button class="btn"
+onclick="searchEvents()">Search</button>
+    <button class="btn btn-secondary" onclick="clearSearch()">Clear</button>
+    </div>
+
+<div id="eventsList" class="cards-container"></div>
+    </section>
+
+<!-- Attendees Section -->
+<section id="attendees"
+
+<section>
+
+<!-- Import Section -->
+<section id="import" class="section">
+    <div class="section-header">
+    </div>
+    <div class="import-container">
+    <div class="upload-area"
+id="uploadArea">
+    <input type="file" id="csvFile"
+accept="_csv" style="display: none;">
+    <p>Drag & drop CSV file here or click to browse</p>
+    <p class="file-info">Supported format: CSV with columns: Event Title, Description, Date, Location, Capacity</p>
+    </div>
+    <button class="btn btn-primary" onclick="importCSV()" style="margin-top:
+
+20px; ">Import Events</button>
+<div id="importResult"
+style="margin-top: 20px;"></div>
+</div>
+</section>
+</div>
+
+<!-- Event Modal -->
+<div id="eventModal" class="modal">
+<div class="modal-content">
+<span class="close"
+onclick="closeEventModal()">&times;</span>
+<h3 id="eventModalTitle">Create Event</h3>
+<form id="eventForm">
+<input type="hidden" id="eventId">
+<div class="form-group">
+<label for="eventTitle">Title </label>
+<input type="text"
+
+id="eventTitle" required>
+    </div>
+    <div class="form-group">
+    <label
+for="eventDescription">Description</label>
+    <textarea id="eventDescription"
+rows="3"></textarea>
+    </div>
+    <div class="form-group">
+    <label for="eventDate">Date *</label>
+    <input type="datetime-local" id="eventDate" required>
+    </div>
+    <div class="form-group">
+    <label
+for="eventLocation">Location *</label>
+    <input type="text" id="eventLocation" required>
+    </div>
+    <div class="form-group">
+
+<label
+for="eventCapacity">Capacity **/label>
+    <input type="number"
+id="eventCapacity" min="1" required>
+    </div>
+    <div class="form-actions">
+    <button type="button"
+class="btn btn-secondary"
+onclick="closeEventModal()">Cancel</button>
+    <button type="submit"
+class="btn btn-primary">Save Event</button>
+    </div>
+    </form>
+    </div>
+</div>
+
+<!-- Attendee Modal -->
+<div id="attendeeModal" class="modal">
+    <div class="modal-content">
+
+<span class="close"
+onclick="closeAttendeeModal()">&times;</span>
+    <h3
+id="attendeeModalTitle">Register Attendee</h3>
+    <form id="attendeeForm">
+    <input type="hidden"
+id="attendeeld">
+    <div class="form-group">
+    </label>
+for="attendeeName">Name *</label>
+    <input type="text"
+id="attendeeName" required>
+    </div>
+    <div class="form-group">
+    </label>
+for="attendeeEmail">Email *</label>
+    <input type="email"
+id="attendeeEmail" required>
+    </div>
+
+<div class="form-group">
+    <label
+for="attendeePhone">Phone</label>
+    <input type="tel"
+id="attendeePhone">
+    </div>
+    <div class="form-group">
+    <label
+for="attendeeEvent">Event *</label>
+    <select id="attendeeEvent"
+required>
+    <option value="">Select an event</option>
+    </select>
+    </div>
+    <div class="form-actions">
+    <button type="button"
+class="btn btn-secondary"
+onclick="closeAttendeeModal()">Cancel</button>
+    <button type="submit"
+
+class="btn btn-primary">Register</button>
+    </div>
+    </form>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
